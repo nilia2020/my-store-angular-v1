@@ -13,6 +13,13 @@ export class AppComponent {
   age = 50;
   image = 'https://www.w3schools.com/howto/img_avatar.png';
   btnDisabled = true;
+
+  register = {
+    name:'',
+    email: '',
+    password: ''
+  }
+
   bkgr1 = "#ffaaaa"
   person = {
     name: 'Jorge',
@@ -21,6 +28,11 @@ export class AppComponent {
   };
   names: string[] = ['Paula', 'Leticia', 'Morena'];
   newName = '';
+  box = {
+    width: 100,
+    height: 100,
+    background: 'green'
+  }
   products: Product[] = [
     {
       name: 'EL mejor juguete',
@@ -84,5 +96,8 @@ addName() {
 }
 deleteName(index: number) {
   this.names.splice(index, 1)
+}
+onRegister() {
+  console.log(this.register)
 }
 }
