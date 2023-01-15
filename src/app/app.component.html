@@ -1,4 +1,55 @@
-<h1>*ngif</h1>
+<h1>Class & Style</h1>
+<input type="text" required #nameInput2="ngModel" [(ngModel)]="person.name" />
+<p class="message-error" [class.active]="nameInput2.invalid">
+  El campo es requerido
+</p>
+<label for="">Nombre</label>
+<input type="text" required #nameInput3="ngModel" [(ngModel)]="person.name" />
+<p [style.font-style]="nameInput3.invalid ? 'italic' : 'normal'">
+  Texto texto texto
+</p>
+<div class="styles">
+  <div>
+    <input type="number" [(ngModel)]="widthImg" />
+  </div>
+  <div>
+    <img [src]="person.avatar" [style.width.%]="widthImg" />
+  </div>
+</div>
+<hr />
+<h1>ngSwitch</h1>
+<input type="text" required [(ngModel)]="person.name" />
+<div [ngSwitch]="person.name">
+  <p *ngSwitchCase="'jorge'">Soy Jorge</p>
+  <p *ngSwitchCase="'juan'">Soy Juan</p>
+  <p *ngSwitchCase="'ica'">Soy Mica</p>
+  <p *ngSwitchDefault="">No hace match</p>
+</div>
+
+<hr />
+<h1>*nfFor Objects</h1>
+<div class="products--grid">
+  <div *ngFor="let product of products">
+    <img [src]="product.image" alt="image" />
+    <h2>$ {{ product.price }}</h2>
+    <p>{{ product.name }}</p>
+  </div>
+</div>
+
+<hr />
+<h1>*ngFor</h1>
+<input type="text" required [(ngModel)]="newName" />
+<button (click)="addName()">Add Name</button>
+
+<ul>
+  <li *ngIf="names.length === 0">No hay nombres en la lista</li>
+  <li *ngFor="let name of names; index as i">
+    {{ i + 1 }} {{ name }}
+    <button (click)="deleteName(i)">Delete</button>
+  </li>
+</ul>
+<hr />
+<h1>*ngIf</h1>
 
 <input type="text" required [(ngModel)]="person.name" />
 <p *ngIf="person.name === 'Jorge'">Soy Jorge</p>
@@ -8,6 +59,7 @@
 <ng-template #elseBlock>
   <p>Bloque de else</p>
 </ng-template>
+<hr />
 <h1>NgModel</h1>
 <p>Nombre: {{ person.name }}</p>
 
@@ -24,7 +76,7 @@
   [(ngModel)]="person.age"
 />
 <p>Valid: {{ ageInput.valid }}</p>
-
+<hr />
 <h1>Eventos</h1>
 <button [disabled]="!btnDisabled">Enviar</button>
 <button (click)="toggleButton()">Toggle Button</button>
@@ -42,12 +94,12 @@
     tempore minima.
   </p>
 </div>
-<br />
+<hr />
 <p>posición: {{ position }}</p>
 <br />
 <p>Nombre: {{ person.name }}</p>
 <input type="text" (keyup)="changeName($event)" [value]="person.name" />
-
+<hr />
 <h1>Propiedades</h1>
 <button [disabled]="btnDisabled">Enviar</button>
 <input type="text" [name]="name" [value]="person.name" />
@@ -59,4 +111,4 @@
 <h2>{{ "Hola Mundo ".repeat(5) }}</h2>
 <p>3 + 3 = {{ 3 + 3 }}</p>
 <h3>Hola, soy {{ name }} y tengo {{ age }} años</h3>
-<img src="{{ image }}" alt="avatar" width="400" />
+<img src="{{ image }}" alt="avatar" width="100" />

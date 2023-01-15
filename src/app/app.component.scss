@@ -4,3 +4,45 @@
   overflow: auto;
   background: rgb(147, 210, 194);
 }
+
+.products--grid {
+  display: flex;
+  flex-direction: column;
+  div {
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    h2 {
+      margin: 0;
+    }
+  }
+}
+@media screen and (min-width: 30em) {
+  .products--grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+  }
+}
+@media screen and (min-width: 50em) {
+  .products--grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 15px;
+  }
+}
+
+.message-error {
+  background-color: red;
+  color: white;
+  opacity: 0;
+  transition: all linear 0.9s;
+  &.active {
+    opacity: 1;
+  }
+}
+.styles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
